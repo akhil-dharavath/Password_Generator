@@ -1,0 +1,35 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+#empty1{
+  font-size:25px;
+  border:solid black 2px;
+  padding:10px;
+  margin-left:30%;
+  margin-right:30%;
+  border-radius:8px;
+}
+
+#values{
+  font-size: 25px;
+}
+.card{
+  font-size:20px
+}
+
+.justify-content-around {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 870px) {
+  .justify-content-around {
+    flex-direction: column;
+  }
+  .save1{
+    margin-top:10px;
+  }
+}
