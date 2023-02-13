@@ -17,7 +17,7 @@ html, body {
 }
 .card{
   font-size:20px;
-  text-align:left!important;
+  text-align:left;
 }
 
 .justify-content-around {
@@ -32,5 +32,21 @@ html, body {
   }
   .save1{
     margin-top:10px;
+  }
+  #manage1{
+    width:60%!important;
+    margin-left: 20vw;
+  }
+  .card{
+    text-align: center!important;
+  }
+}
+@media (max-width: 400px) {
+  .card{
+    text-align: center!important;
+  }
+  #manage1{
+    margin-left: 5vw!important;
+    width:90%!important;
   }
 }
