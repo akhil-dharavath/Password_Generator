@@ -16,7 +16,8 @@ html, body {
   font-size: 25px;
 }
 .card{
-  font-size:20px
+  font-size:20px;
+  text-align:left!important;
 }
 
 .justify-content-around {
