@@ -1,3 +1,4 @@
+//generating passwords
 function generatePassword(len) {
   var length = len,
     charset =
@@ -6,7 +7,10 @@ function generatePassword(len) {
   for (var i = 0, n = charset.length; i < length; ++i) {
     retVal += charset.charAt(Math.floor(Math.random() * n));
   }
-  return retVal;
+  if (retVal.length == len)
+    return retVal;
+  else
+    generatePassword(len)
 }
 function password1(len) {
   let capital = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -38,45 +42,47 @@ function password1(len) {
         }
       }
     }
+    console.log(capitalCheck, smallCheck, specailCheck, numberCheck)
     if (capitalCheck > 0 && smallCheck > 0 && specailCheck > 0 && numberCheck > 0)
       break;
   }
+  console.log(pass.length)
   empty1.innerHTML = pass;
   setTimeout(() => {
-    let key = prompt('enter some value to save the password ')
+    let key = prompt('enter some key to save the password ')
     let breaking = 0
-      for (var i = 0; i < localStorage.length; i++) {
-        if (key == localStorage.key(i)) {
-          alert('This key already exists')
-          breaking++;
-          break;
-        }
+    for (var i = 0; i < localStorage.length; i++) {
+      if (key == localStorage.key(i)) {
+        alert('This key already exists. \nYou can save password manually below')
+        breaking++;
+        break;
       }
-      if(key==''){
-        alert('Not provided required values')}
-      else{
-        if (breaking == 0 && !key=='')
+    }
+    if (key == '') {
+      alert('Not provided required values.\nYou can save password manually below')
+    }
+    else {
+      if (breaking == 0 && !key == '')
         localStorage.setItem(key, pass);
-      }
+    }
   }, 700)
 }
 
+
+//saved Passwords
 function saved() {
   var text = 'Saved Passwords are '
   for (var i = 0; i < localStorage.length; i++) {
     text = text + "<br>" + localStorage.key(i) + ' : ' + localStorage.getItem(localStorage.key(i));
   }
   if (localStorage.length > 0)
-    values.innerHTML= text
+    values.innerHTML = text
   else
-    values.innerHTML= 'No saved Passwords'
+    values.innerHTML = 'No saved Passwords'
 }
 
 
-
-
-
-
+//Manage Passwords
 edit.addEventListener("click", (e) => {
   e.preventDefault()
   let k = key1.value
@@ -84,19 +90,20 @@ edit.addEventListener("click", (e) => {
   let break1 = 0
   for (var i = 0; i < localStorage.length; i++) {
     if (k == localStorage.key(i)) {
-      if(!k=='' && !v==''){
-      localStorage.setItem(k, v);
-        key1.value='';value1.value=''
-      break1++;
-      break;
-    }}
+      if (!k == '' && !v == '') {
+        localStorage.setItem(k, v);
+        key1.value = ''; value1.value = ''
+        break1++;
+        break;
+      }
+    }
   }
-  if(k=='' || v=='')
+  if (k == '' || v == '')
     alert('Not provided required values')
-  else{
-  if (break1 == 0) {
-    alert('There is no such key')
-  }
+  else {
+    if (break1 == 0) {
+      alert('There is no such key')
+    }
   }
 })
 
@@ -107,17 +114,18 @@ add.addEventListener("click", (e) => {
   let breaking = 0
   for (var i = 0; i < localStorage.length; i++) {
     if (k == localStorage.key(i)) {
-      alert('This key already exists')
+      alert('This key already exists');
+      key1.value = '';
       breaking++;
       break;
     }
   }
-  if(k=='' || v=='')
+  if (k == '' || v == '')
     alert('Not provided required values')
-  else{ 
-    if (breaking == 0)
-    localStorage.setItem(k, v);
-        key1.value='';value1.value=''
+  else {
+    if (breaking == 0){
+      localStorage.setItem(k, v);
+    key1.value = ''; value1.value = ''}
   }
 })
 
@@ -129,7 +137,7 @@ delet.addEventListener("click", (e) => {
   for (var i = 0; i < localStorage.length; i++) {
     if (k == localStorage.key(i)) {
       localStorage.removeItem(k);
-        key1.value='';value1.value=''
+      key1.value = ''; value1.value = ''
       break;
     }
     if (i == localStorage.length - 1) {
@@ -144,5 +152,6 @@ clear1.addEventListener("click", (e) => {
     alert('It\'s already empty')
   else
     localStorage.clear();
-        key1.value='';value1.value=''
+  key1.value = ''; value1.value = ''
 })
+
