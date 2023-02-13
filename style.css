@@ -25,7 +25,7 @@ html, body {
 }
 
 /* Responsive layout - makes a one column layout instead of a two-column layout */
-@media (max-width: 870px) {
+@media (max-width: 935px) {
   .justify-content-around {
     flex-direction: column;
   }
