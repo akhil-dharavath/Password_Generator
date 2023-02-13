@@ -38,11 +38,9 @@ function password1(len) {
         }
       }
     }
-    console.log(capitalCheck, smallCheck, specailCheck, numberCheck)
     if (capitalCheck > 0 && smallCheck > 0 && specailCheck > 0 && numberCheck > 0)
       break;
   }
-  console.log(pass.length)
   empty1.innerHTML = pass;
   setTimeout(() => {
     let key = prompt('enter some value to save the password ')
