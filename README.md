@@ -1,1 +1,1 @@
-Link: https://akhildgithub.github.io/Password_Generator/
+Link: https://password-generator-akhil.netlify.app/
